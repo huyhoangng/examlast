@@ -1,0 +1,46 @@
+.btn-group-sm>.btn, .btn-sm{
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    border-radius: 1.0rem;
+    
+}
+.btn-warning{
+    background-color: rgb(219, 38, 38) ;
+}
+.btn-info{
+    color: #ffffff;
+    background-color: #08c227;
+    border-color: #ced4da;
+}
+h1{
+    color: #878889;
+}
+.table th td{
+    justify-content: center;
+    align-items: center;
+    border-color: aqua;
+    border: 3px;
+}
+.trash-icon {
+    font-size: 20px; 
+    font-weight: 30px;
+}
+.edit-icon{
+    font-size: 20px;
+}
+.on3{
+    border: 3px solid;
+    width: 50%;
+    border-radius: 5px;
+    border-color: rgb(0, 72, 255);
+}
+h3{
+    height: 60px;
+    line-height: 60px;
+    background-color: rgb(0, 119, 255);
+    padding-left: 10px;
+    width: 50%;
+    border-radius: 5px;
+    color: #ffffff;
+}

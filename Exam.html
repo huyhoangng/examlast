@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The lastest Test</title>
+    <link data-require="bootstrap@4.0.5" data-semver="4.0.5" rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="exam.js"></script>
+   
+</head>
+<body ng-app="myApp" ng-controller="myCtrl">
+<div class="container">
+    <h1>Angular 2 Quick Start</h1>
+    
+        <h3>Current User: Hoanghuy123@gmail.com</h3>
+    
+    <hr>
+        <button type="button" class="btn btn-info float-md-left" data-toggle="modal"
+        data-target="#myModal">Add Product
+    </button>
+
+        <br><br>
+        <div class="table-responsive" style="margin-top: 18px;">
+           <div class="on3">
+            <table class="table table-responsive">
+                
+                <thead>
+                    <tr>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                        <th>No.</th>
+                        <th>Product Name</th>
+                        <th>Product Price</th> 
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="user in users">
+                        <td>
+                            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
+                            data-target="#myModalEdit" ng-click="selectUser(user)">
+                                <div class="edit-icon">&#9998;</div>
+                            </button>
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-warning btn-sm" data-toggle="modal"
+                           data-target="#myModalDelete" ng-click="selectUser(user)" >
+                           <div class="trash-icon">&#128465;</div>
+                           </button>    
+                       </td>
+                        <td>{{$index +1}}.</td>
+                        <td>{{user.productname}}</td>
+                        <td>${{user.price}}</td>
+                    </tr>
+                </tbody>
+            </table>
+           </div>
+        </div>
+        
+        <!--Modal-->
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+                <!--Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Save Name</h4>
+                        <button type="button" class="close" data-dismiss="modal">x</button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                <label class="control-label col-sm-2">Product Name</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" ng-model="newUser.productname">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-2">Product Price</label>
+                                <div class="col-sm-10">
+                                    <input type="number" step="0.01" class="form-control" ng-model="newUser.price">
+                                    
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <button type="submit" class="btn btn-success" ng-click="addUser()" data-dismiss="modal">
+                                        Add New
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="modal fade" id="myModalEdit" role="dialog">
+            <div class="modal-dialog">
+               
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Edit User</h4>
+                        <button type="button" class="close" data-dismiss="modal">x</button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                <label class="control-label col-sm-2">Product Name</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" ng-model="clickedUser.productname">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-2">Product Price</label>
+                                <div class="col-sm-10">
+                                    <input type=number step=0.01 class="form-control" ng-model="clickedUser.price" /><br />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <button type="submit" class="btn btn-success" ng-click="addUser()" data-dismiss="modal">
+                                        Save New
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <!--modal for delete-->
+        <div class="modal fade" id="myModalDelete" role="dialog">
+            <div class="modal-dialog">
+                <!--modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Delete User</h4>
+                        <button type="button" class="close" data-dismiss="modal">x</button>
+                    </div>
+                    <div class="modal-body">
+                        <strong style="color: red;">Are you sure you want to delete "{{clickedUser.productname}}" User?</strong>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="deleteUser()">Yes</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+                    </div>
+                </div>
+            </div>
+    
+</div>
+</div>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
+integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
+integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+crossorigin="anonymous"></script> 
+</body>
+</html>
